@@ -1,6 +1,5 @@
 /*ajax-mail.js*/
 $(function() {
-
 	
 
 	// Get the form.
@@ -9,6 +8,11 @@ $(function() {
 	// Get the messages div.
 	var formMessages = $('.form-Messages');
 	
+
+	// IF EXIST SESSION OR COOKIE WITH TOKEN REDIRECT FOR PERFIL PAGE
+	if (isAutenticated()) {
+		document.location.href = "/perfil.html";
+	}
 
 
 	// Set up an event listener for the contact form.
@@ -38,14 +42,40 @@ $(function() {
 			$(formMessages).removeClass('error');
 			$(formMessages).addClass('success');
 
-			// Verify callback and Set the message text.			
-			if (response[0] == "rejected") {
-				$(formMessages).text(response[1]);
-				console.log(response);
-			} else {
+			// Verify callback and Set the message text.	
+			switch(response[0]) {
+				case "accepted" : 
+				
 				$(formMessages).text(response[0]);
+				console.log(response);				
+
+				dologin(response[2],response[1]);
+
+				if (isAutenticated()) {
+					document.location.href = "/perfil.html";
+				}
+				break;
+				
+				case "rejected" :
+					$(formMessages).text(response[1]);
+					console.log(response);
+				break;
+				
+				default: 
+				$(formMessages).text("Invalid callback response.");
 				console.log(response);
+				break;
 			}
+
+			
+				
+			
+
+				
+
+				
+
+			
 
 			// Clear the form.
 			$('#email, textarea').val('');
