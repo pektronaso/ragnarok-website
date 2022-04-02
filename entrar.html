@@ -124,11 +124,11 @@
                         <div class="upcoming_gaming_text">
 						<h3>Entre com seu login</h3>
 						<br>
-                            <form id="enter-form" action="http://localhost:8080/account/logar">
+                            <form id="enter-form" action="http://localhost:8080/account/logar" onsubmit="$('#imgLoad').show();$('.form-Messages').text('')">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form_input">
-                                        <input name="email" placeholder="E-mail" type="text" required>
+                                        <input name="email" id="email" placeholder="E-mail" type="text" required>
                                     </div>									
                                 </div>
                                 <div class="col-lg-12">
@@ -142,13 +142,17 @@
 							<br>
                             <div class="form_textarea remember" >
                                     <input id="hchk" type="checkbox" name="lembrar" value="true" checked hidden>
-									<input type="checkbox" name="lembrar" value="true" onchange="document.getElementById('hchk').value = this.checked" checked>
+									<input type="checkbox" name="lembrar" value="true" onchange="$('#hchk').val(this.checked)" checked>
 									<label for="lembrar"> continuar logado.</label><br>	
                             </div>
                             <div class="form_input_btn text-center">
-                                <button type="submit" class="btn btn-link">Entrar<img src="assets/img/icon/arrrow-icon.webp" alt=""></button>
+                                <button type="submit" class="btn btn-link entrar" >Entrar<img src="assets/img/icon/arrrow-icon.webp" alt=""></button>
                             </div>
-                            <p class="form-Messages"></p>
+                            <img id="imgLoad" src="assets/img/others/imagens-e-gifs-de-loading-13.gif" alt="Loading" style="display: none;" >
+                            
+                            <p class="form-Messages">
+                                
+                            </p>
                         </form>
                         </div>
                         
