@@ -1,9 +1,8 @@
-/*ajax-mail.js*/
 $(function() {
 	
 
 	// Get the form.
-	var form = $('#enter-form');
+	var form = $('#addLogin-form');
 
 	// Get the messages div.
 	var formMessages = $('.form-Messages');

@@ -4,7 +4,19 @@
 * @author IcoFont https://icofont.com 
 * @copyright Copyright (c) 2015 - 2018 IcoFont 
 * @license - https://icofont.com/license/
-*/@font-face{
+*/
+
+
+@font-face {
+	font-family: "icomoon";
+	src: url("../fonts/icomoon.eot");
+	src: url("../fonts/icomoon.woff") format("woff"),
+	url("../fonts/icomoon.ttf") format("truetype"),
+	url("../fonts/icomoon.svg#icomoon") format("svg");
+	}
+
+
+@font-face{
 	
 	font-family:IcoFont;
 	font-weight:400;
