@@ -14,6 +14,20 @@ function dologin(token, remember) {
   }
 
 
+  function getToken(){
+   
+  if (readCookie("token") !== null) {        
+    console.log(readCookie("token"));
+      return readCookie("token");
+  } 
+ 
+  if (sessionStorage.getItem("token") !== null) {        
+    console.log(sessionStorage.getItem("token"));
+    return true;
+  }
+
+  
+  }
 
   function isAutenticated() {
     

@@ -135,7 +135,7 @@
 
                                     <div class="table-responsive custom-table-responsive">
 
-                                        <table class="table custom-table">
+                                        <table id="accDate" class="table custom-table">
                                             <caption>Accounts: 2/2 &nbsp;&nbsp;</caption>
                                             
                                           <thead>
@@ -165,7 +165,7 @@
                                                 <small class="d-block">1/3 personagens.</small>
                                               </td>
                                               <td>reset</td>
-                                              <td><a href="#do" onclick="$('#alteraSenha-form').show()">alterar</a></td>
+                                              <td><a href="#do" onclick="$('#alteraSenha-form').show();"><i class="icofont-refresh"></i> alterar</a></td>
                                               <td><i class="icofont-lock"></i></td>
                                             </tr>
                                             <tr class="spacer"><td colspan="100"></td></tr>
@@ -179,7 +179,7 @@
                                                   <small class="d-block">0/3 personagens.</small>
                                                 </td>
                                                 <td>reset</td>
-                                                <td>alterar</td>
+                                                <td><i class="icofont-refresh"></i> alterar</td>
                                                 <td><i class="icofont-unlocked"></i></i></td>
                                               </tr>
                                               <tr class="spacer"><td colspan="100"></td></tr>
@@ -252,6 +252,7 @@
                                 </form>
                                 
                                 <p class="form-Messages">response here</p>
+                                <img id="imgLoad" src="assets/img/others/imagens-e-gifs-de-loading-13.gif" alt="Loading" style="display: none;" >
                             </div>
                         </div>
                     </div>
@@ -616,7 +617,11 @@
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/jquery.counterup.min.js"></script>
 <script src="assets/js/jquery-waypoints.js"></script>
+<script src="assets/js/md5.min.js"></script>
 <script src="assets/js/functions.js"></script>
+<Script src="assets/js/load-date.js"></Script>
+<Script src="assets/js/ajax-InPerfil.js"></Script>
+
 <!-- Main JS -->
 <script src="assets/js/main.js"></script>
 
