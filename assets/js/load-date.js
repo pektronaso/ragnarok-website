@@ -29,9 +29,28 @@ $(function() {
 
 			console.log(response);
 
+			frmAltpsw = $('#alteraSenha-form');
+
 			response.forEach(_element => {
+
+
+				var bankB = numeral(_element.bankBalance).format('0,0');
+
+
+				document.getElementById("accDate").innerHTML += "<tr scope='row'><th scope='row'></th><td><a href='#'> "+_element.account+" </a></td><td><i class='icofont-money'></i> "+bankB+" zenys no banco<small class='d-block'>1/3 personagens.</small></td><td>reset</td><td><a href='#do' onclick='frmAltpsw.show();'><i class='icofont-refresh'></i> alterar</a></td><td><i class='icofont-lock'></i></td></tr><tr class='spacer'><td colspan='100'></td></tr>";
+
 				
-				console.log(_element.username);
+				
+			  
+
+
+
+
+			  
+
+
+				
+
 			});
 			
 
