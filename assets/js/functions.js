@@ -16,14 +16,12 @@ function dologin(token, remember) {
 
   function getToken(){
    
-  if (readCookie("token") !== null) {        
-    console.log(readCookie("token"));
+  if (readCookie("token") !== null) {            
       return readCookie("token");
   } 
  
-  if (sessionStorage.getItem("token") !== null) {        
-    console.log(sessionStorage.getItem("token"));
-    return true;
+  if (sessionStorage.getItem("token") !== null) {            
+    return sessionStorage.getItem("token");
   }
 
   
