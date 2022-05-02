@@ -1,38 +1,53 @@
-/*ajax-mail.js*/
 $(function() {
 	
+    
 
-	// Get the form.
-	var form = $('#enter-form');
+	var form_AlteraSenha = $('#alteraSenha-form');
+    
+    
 
 	// Get the messages div.
 	var formMessages = $('.form-Messages');
 	
 
-	// IF EXIST SESSION OR COOKIE WITH TOKEN REDIRECT FOR PERFIL PAGE
-	if (isAutenticated()) {
-		document.location.href = "/my-account.html";
-	}
-
-
-	// Set up an event listener for the contact form.
-	$(form).submit(function(e) {
+    
+    $(form_AlteraSenha).submit(function(e) {
 		
 			
 		// Stop the browser from submitting the form.
 		e.preventDefault();
-		
+
+		$('#imgLoad').show();
 		
 		// Serialize the form data.
-		var formData = $(form).serializeArray();
+		var formData = $(form_AlteraSenha).serializeArray();
+
+
+		if (formData[1].value.length < 6  ) {
+
+			formMessages.text("Senha ter pelo menos 6 caracteres");
+			$('#imgLoad').hide();
+
+
+		} else {
 
 		formData[1].value = md5(formData[1].value);
+		formData[2].value = md5(formData[2].value);
+
+
+		formData.push({
+			name: 'token',
+			value: getToken() 
+		  });
+
+		
+		
 		
 		
 		// Submit the form using AJAX.
 		$.ajax({
 			type: 'POST',
-			url: $(form).attr('action'),
+			url: $(form_AlteraSenha).attr('action'),
 			data: formData
 		})
 		.done(function(response) {
@@ -43,43 +58,21 @@ $(function() {
 			$(formMessages).removeClass('error');
 			$(formMessages).addClass('success');
 
-			console.log(response[0]);
-			// Verify callback and Set the message text.	
-			switch(response[0]) {
-				case "Login aceito, redirecionando" : 
-				
-				$(formMessages).text(response[0]);
-				console.log(response);				
+			console.log(response);
 
-				dologin(formData[0].value, response[2],response[1]);
+			formMessages.text(response);
 
-				if (isAutenticated()) {
-					document.location.href = "/my-account.html";
-				}
-				break;
-				
-				case "rejected" :
-					$(formMessages).text(response[1]);
-					console.log(response);
-				break;
-				
-				default: 
-				$(formMessages).text("Invalid callback response.");
-				console.log(response);
-				break;
-			}
-
-
+			form_AlteraSenha.hide();
 			
 
 			// Clear the form.
-			$('#email, textarea').val('');
-			$('#senha, textarea').val('');
+			$('#Asenha, textarea').val('');
+			$('#con_Asenha, textarea').val('');
+			
 			$('#imgLoad').hide();
 			
 		})
 		.fail(function(data) {
-
 			
 
 			// Make sure that the formMessages div has the 'error' class.
@@ -95,7 +88,9 @@ $(function() {
 				$(formMessages).text('Oops! An error occured and your message could not be sent.');
 			}
 		});
-			
+	}
 	});
+	
+
 
 });

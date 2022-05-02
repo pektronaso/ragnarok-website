@@ -17,10 +17,13 @@ $(function() {
 		// Stop the browser from submitting the form.
 		e.preventDefault();
 		
+
+		$('#imgLoad').show();
+
 		
 		//get password and Hash.
 		    var old_password = document.getElementById("senha").value;
-			var old_conpassword = document.getElementById("con_senha").value;;
+			var old_conpassword = document.getElementById("con_senha").value;
 			
 			if(old_password != old_conpassword) {				
 			alert("Confirme sua senha corretamente!");
@@ -59,6 +62,7 @@ $(function() {
 
 			// Clear the form.
 			$('#register-form input,#register-form textarea').val('');
+			$('#imgLoad').hide();
 		})
 		.fail(function(data) {
 			// Make sure that the formMessages div has the 'error' class.
@@ -68,8 +72,10 @@ $(function() {
 			// Set the message text.
 			if (data.responseText !== '') {
 				$(formMessages).text(data.responseText);
+				$('#imgLoad').hide();
 			} else {
 				$(formMessages).text('Oops! An error occured and your message could not be sent.');
+				$('#imgLoad').hide();
 			}
 		});
 			}}
